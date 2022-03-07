@@ -6,13 +6,6 @@ export interface ResponseVideo {
   sources: string
   thumb: string
 }
-export interface IVideo {
-  title: string
-  subtitle: string
-  description: string
-  src: string
-  thumbnail: string
-}
 export default class Video extends Entity {
   title: string
   subtitle: string
@@ -20,7 +13,13 @@ export default class Video extends Entity {
   src: string
   thumbnail: string
 
-  constructor({ title, subtitle, description, src, thumbnail }: IVideo) {
+  constructor({
+    title,
+    subtitle,
+    description,
+    src,
+    thumbnail,
+  }: Record<string, string>) {
     super()
     this.title = title
     this.subtitle = subtitle

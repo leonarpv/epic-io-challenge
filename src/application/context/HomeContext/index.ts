@@ -1,7 +1,8 @@
 import { createContext } from "react"
-import { IVideo } from "../../../domain/entities/Video"
+import Video from "../../../domain/entities/Video"
 interface IHomeContext {
-  videos: IVideo[]
+  videos: Video[]
+  currentVideo: Video | null
 }
 
 const HomeContext = createContext<IHomeContext | undefined>(undefined)

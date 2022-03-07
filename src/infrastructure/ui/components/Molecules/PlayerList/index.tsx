@@ -1,19 +1,34 @@
 import {
+  CircularProgress,
+  IconButton,
   ImageList,
   ImageListItem,
   ImageListItemBar,
-  ListSubheader,
 } from "@material-ui/core"
+import { PlayArrow } from "@material-ui/icons"
 
-import { IVideo } from "../../../../../domain/entities/Video"
+import Video from "../../../../../domain/entities/Video"
 
-export default function PlayerList({ videos }: { videos: IVideo[] }) {
+export default function PlayerList({
+  videos,
+  loading,
+  handleClickItem,
+}: {
+  videos: Video[]
+  loading: boolean
+  handleClickItem: ({ itemId }: { itemId: number }) => void
+}) {
+  if (loading) {
+    return (
+      <ImageListItem key="Subheader" cols={2}>
+        <CircularProgress />
+      </ImageListItem>
+    )
+  }
+
   return (
     <ImageList>
-      <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">December</ListSubheader>
-      </ImageListItem>
-      {videos.map((video: IVideo) => (
+      {videos.map((video: Video) => (
         <ImageListItem key={video.thumbnail}>
           <img
             src={`${video.thumbnail}?w=248&fit=crop&auto=format`}
@@ -21,7 +36,15 @@ export default function PlayerList({ videos }: { videos: IVideo[] }) {
             alt={video.title}
             loading="lazy"
           />
-          <ImageListItemBar title={video.title} subtitle={video.description} />
+          <ImageListItemBar
+            title={video.title}
+            subtitle={video.description}
+            actionIcon={
+              <IconButton onClick={() => handleClickItem({ itemId: video.id })}>
+                <PlayArrow />
+              </IconButton>
+            }
+          />
         </ImageListItem>
       ))}
     </ImageList>
