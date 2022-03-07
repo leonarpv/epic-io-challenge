@@ -5,7 +5,7 @@ import ApiVideoRepository from "../repositories/ApiVideoRepository"
 const api = new ApiVideoRepository()
 
 export default class VideoController {
-  static async getAllBreeds(): Promise<Video[]> {
+  static async getAllVideos(): Promise<Video[]> {
     return getVideoList(api)
   }
 }

@@ -1,4 +1,6 @@
 import { Container, makeStyles } from "@material-ui/core"
+import { BrowserRouter } from "react-router-dom"
+import { Home } from "./components/Organism/Home/Home"
 
 const useStyles = makeStyles({
   app: {
@@ -12,14 +14,7 @@ const App = () => {
   const classes = useStyles()
   return (
     <Container className={classes.app}>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+      <Home />
     </Container>
   )
 }
