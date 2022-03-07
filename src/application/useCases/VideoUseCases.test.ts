@@ -1,5 +1,5 @@
 //write units test to check BreedUseCases
-import ApiVideoRepository from "../../infrastructure/Repositories/ApiVideoRepository"
+import ApiVideoRepository from "../../infrastructure/repositories/ApiVideoRepository"
 import { getVideoList } from "./VideoUseCases"
 
 const api = new ApiVideoRepository()
