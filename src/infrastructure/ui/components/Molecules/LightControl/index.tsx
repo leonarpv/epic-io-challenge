@@ -27,7 +27,7 @@ export default function LightControl() {
   };
 
   return (
-    <Box flexDirection="row" display="flex">
+    <Box flexDirection="column" display="flex" justifyContent="center">
       <SliderControl title="Brightness" onChange={handleBrightChange} />
       <SliderControl title="Opacity" onChange={handleOpacityChange} />
     </Box>
