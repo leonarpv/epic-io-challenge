@@ -1,5 +1,6 @@
 import { Container, makeStyles } from "@material-ui/core"
 import { BrowserRouter } from "react-router-dom"
+import HomeProvider from "../../application/context/HomeContext/HomeProvider"
 import { Home } from "./components/Organism/Home/Home"
 
 const useStyles = makeStyles({
@@ -14,7 +15,9 @@ const App = () => {
   const classes = useStyles()
   return (
     <Container className={classes.app}>
-      <Home />
+      <HomeProvider>
+        <Home />
+      </HomeProvider>
     </Container>
   )
 }

@@ -1,12 +1,14 @@
 import { createContext } from "react"
-import Video from "../../../domain/entities/Video"
+import { IHomeContextState } from "./interfaces"
 
-interface IHomeContextState {
-  videos: Video[]
-  currentVideo: Video | null
-  lightPercentage: number
+export const contextDefaultValues: IHomeContextState = {
+  videos: [],
+  currentVideo: null,
+  lightPercentage: 0,
+  setVideos: () => {},
+  setLightPercentage: () => {},
+  setCurrentVideo: () => {},
 }
-
-const HomeContext = createContext<IHomeContextState | null>(null)
+const HomeContext = createContext<IHomeContextState>(contextDefaultValues)
 
 export default HomeContext

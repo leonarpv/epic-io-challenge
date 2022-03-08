@@ -5,14 +5,12 @@ import LightControl from "../LightControl"
 
 const Controls = ({
   paused,
-  disabledPlay,
-  disabled,
+
   handlePlay,
   handleLightChange,
 }: {
   paused: boolean
-  disabledPlay: boolean
-  disabled: boolean
+
   handlePlay: () => void
   handleLightChange: (
     event: React.ChangeEvent<any>,
@@ -20,17 +18,11 @@ const Controls = ({
   ) => void
 }) => {
   return (
-    <ButtonGroup
-      variant="contained"
-      disabled={disabled}
-      aria-label="outlined primary button group"
-    >
+    <ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Button>
         <SkipPrevious />
       </Button>
-      <Button disabled={disabledPlay} onClick={handlePlay}>
-        {paused ? <PlayArrow /> : <Pause />}
-      </Button>
+      <Button onClick={handlePlay}>{paused ? <PlayArrow /> : <Pause />}</Button>
       <Button>
         <SkipNext />
       </Button>

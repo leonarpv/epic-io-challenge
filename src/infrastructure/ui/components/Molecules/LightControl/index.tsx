@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react"
+import React from "react"
 import { Box, Slider } from "@material-ui/core"
 
 export default function LightControl({

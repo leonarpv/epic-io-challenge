@@ -6,19 +6,13 @@ import {
   ImageListItemBar,
 } from "@material-ui/core"
 import { PlayArrow } from "@material-ui/icons"
+import useVideos from "../../../../../application/hooks/useVideos"
 
 import Video from "../../../../../domain/entities/Video"
 
-export default function PlayerList({
-  videos,
-  loading,
-  handleClickItem,
-}: {
-  videos: Video[]
-  loading: boolean
-  handleClickItem: ({ itemId }: { itemId: number }) => void
-}) {
-  if (loading) {
+const VideosList = () => {
+  const { videos, loadingVideos } = useVideos()
+  if (loadingVideos) {
     return (
       <ImageListItem key="Subheader" cols={2}>
         <CircularProgress />
@@ -26,6 +20,7 @@ export default function PlayerList({
     )
   }
 
+  const handleClickItem = ({ itemId }: { itemId: number }) => {}
   return (
     <ImageList>
       {videos.map((video: Video) => (
@@ -47,6 +42,9 @@ export default function PlayerList({
           />
         </ImageListItem>
       ))}
+      <ImageListItem></ImageListItem>
     </ImageList>
   )
 }
+
+export default VideosList

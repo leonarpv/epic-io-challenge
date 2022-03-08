@@ -3,6 +3,8 @@ import { Card, Container, Typography } from "@material-ui/core"
 import VideoPlayer from "../../Atoms/VideoPlayer"
 import HomeContext from "../../../../../application/context/HomeContext"
 
+
+
 const Display = ({ playing }: { playing: boolean }) => {
   const { currentVideo, lightPercentage } = useContext(HomeContext)
 
