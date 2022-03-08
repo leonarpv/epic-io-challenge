@@ -22,3 +22,7 @@ Using this approach the domain folder does know-how will be implemented, and the
 - Atomic Design
 
 In this case, Atomic Design provides another way to focus the build and organize the component composition. Getting the possibility to extend reuse and restyle from de main style component resource like Material-UI the components to be used on the solution from de Atoms as minimal components from de Material UI to Organism like the main page using those Molecules components based on the challenge requiments.
+- State, context and styling
+
+This challenge uses a ContextAPI implementation to figure out the requirements. In this ContextAPI configuration, it's established and initialized inside de application layer, and some hooks consume them from the infrastructure UI layer. T
+he Styling uses de Material UI base, and also a styled-components in some specific implementations to extend the UI in a declarative way
