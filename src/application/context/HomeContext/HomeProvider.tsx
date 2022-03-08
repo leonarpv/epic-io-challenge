@@ -11,23 +11,25 @@ const HomeProvider: FC = ({ children }) => {
   const [lightPercentage, setLightPercentage] = useState<number>(
     contextDefaultValues.lightPercentage
   )
-
-  return (
-    <HomeContext.Provider
-      value={
-        {
-          videos,
-          setVideos,
-          currentVideo,
-          setCurrentVideo,
-          lightPercentage,
-          setLightPercentage,
-        } as unknown as IHomeContextState
-      }
-    >
-      {children}
-    </HomeContext.Provider>
-  )
+const [playVideo, setPlayVideo] = useState(contextDefaultValues.playVideo)
+return (
+  <HomeContext.Provider
+    value={
+      {
+        videos,
+        setVideos,
+        currentVideo,
+        setCurrentVideo,
+        lightPercentage,
+        setLightPercentage,
+        playVideo,
+        setPlayVideo,
+      } as unknown as IHomeContextState
+    }
+  >
+    {children}
+  </HomeContext.Provider>
+)
 }
 
 export default HomeProvider
