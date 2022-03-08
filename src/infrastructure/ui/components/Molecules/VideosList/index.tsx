@@ -1,49 +1,60 @@
 import {
+  Box,
   CircularProgress,
+  FormControl,
   IconButton,
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  InputLabel,
+  MenuItem,
+  Select,
 } from "@material-ui/core"
-import { PlayArrow } from "@material-ui/icons"
-import useVideos from "../../../../../application/hooks/useVideos"
 
-import Video from "../../../../../domain/entities/Video"
+import useVideos from "../../../../../application/hooks/useVideos"
+import {
+  LoaderContainer,
+  StyledContainer,
+  StyledImage,
+  StyledSpan,
+} from "./styles.css"
 
 const VideosList = () => {
-  const { videos, loadingVideos } = useVideos()
+  const { videos, loadingVideos, handleSelectVideo } = useVideos()
   if (loadingVideos) {
     return (
-      <ImageListItem key="Subheader" cols={2}>
-        <CircularProgress />
-      </ImageListItem>
+      <LoaderContainer>
+        <CircularProgress size={90} />
+      </LoaderContainer>
     )
   }
 
-  const handleClickItem = ({ itemId }: { itemId: number }) => {}
   return (
-    <ImageList>
-      {videos.map((video: Video) => (
-        <ImageListItem key={video.thumbnail}>
-          <img
-            src={`${video.thumbnail}?w=248&fit=crop&auto=format`}
-            srcSet={`${video.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={video.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={video.title}
-            subtitle={video.description}
-            actionIcon={
-              <IconButton onClick={() => handleClickItem({ itemId: video.id })}>
-                <PlayArrow />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-      <ImageListItem></ImageListItem>
-    </ImageList>
+    <StyledContainer>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Videos</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Videos"
+          onChange={handleSelectVideo}
+        >
+          {videos.map((video, index) => {
+            return (
+              <MenuItem key={video.id} value={video.id}>
+                <StyledImage
+                  src={`${video.thumbnail}?w=20&h=20&fit=crop&auto=format`}
+                  srcSet={`${video.thumbnail}?w=20&h=20&fit=crop&auto=forma`}
+                  alt={video.title}
+                  loading="lazy"
+                />
+                <StyledSpan> {video.title}</StyledSpan>
+              </MenuItem>
+            )
+          })}
+        </Select>
+      </FormControl>
+    </StyledContainer>
   )
 }
 

@@ -1,36 +1,45 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Card, Container, Typography } from "@material-ui/core"
 import VideoPlayer from "../../Atoms/VideoPlayer"
 import HomeContext from "../../../../../application/context/HomeContext"
+import useVideos from "../../../../../application/hooks/useVideos"
+import {
+  CaptionContainer,
+  PlayerContainer,
+  StyledContainer,
+} from "./styles.css"
 
-
-
-const Display = ({ playing }: { playing: boolean }) => {
+const Display = () => {
   const { currentVideo, lightPercentage } = useContext(HomeContext)
+  const { playVideo } = useVideos()
 
   return (
-    <Container maxWidth="md">
+    <StyledContainer>
       {currentVideo ? (
         <>
-          <VideoPlayer
-            url={currentVideo.url}
-            playing={playing}
-            lightPercentage={lightPercentage}
-          />
-          <Typography gutterBottom variant="h3" component="div">
-            {currentVideo?.title}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {currentVideo?.subtitle}
-          </Typography>
-          <Typography variant="body2" gutterBottom>
-            {currentVideo?.description}
-          </Typography>
+          <PlayerContainer>
+            <VideoPlayer
+              url={currentVideo.url}
+              playing={playVideo}
+              lightPercentage={lightPercentage}
+            />
+          </PlayerContainer>
+          <CaptionContainer>
+            <Typography gutterBottom variant="h4">
+              {currentVideo?.title}
+            </Typography>
+            <Typography gutterBottom variant="h6">
+              {currentVideo?.subtitle}
+            </Typography>
+            <Typography variant="body2" className="description" gutterBottom>
+              {currentVideo?.description}
+            </Typography>
+          </CaptionContainer>
         </>
       ) : (
         <Card />
       )}
-    </Container>
+    </StyledContainer>
   )
 }
 

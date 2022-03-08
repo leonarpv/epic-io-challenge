@@ -1,5 +1,4 @@
 import { Container, makeStyles } from "@material-ui/core"
-import { BrowserRouter } from "react-router-dom"
 import HomeProvider from "../../application/context/HomeContext/HomeProvider"
 import { Home } from "./components/Organism/Home/Home"
 
@@ -8,6 +7,8 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    borderRadius: 20,
+    padding: 20,
   },
 })
 

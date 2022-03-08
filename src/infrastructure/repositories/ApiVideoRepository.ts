@@ -19,7 +19,7 @@ export default class ApiVideoRepository implements VideoRepository {
         ...video,
       })
     })
-    console.log({ newVideos })
+
     return newVideos
   }
 }

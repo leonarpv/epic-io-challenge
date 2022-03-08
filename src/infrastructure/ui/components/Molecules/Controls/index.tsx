@@ -1,32 +1,31 @@
 import { Pause, PlayArrow, SkipNext, SkipPrevious } from "@material-ui/icons"
+import useControls from "../../../../../application/hooks/useControls"
+import Video from "../../../../../domain/entities/Video"
 import Button from "../../Atoms/Button"
 import ButtonGroup from "../../Atoms/ButtonGroup"
-import LightControl from "../LightControl"
 
 const Controls = ({
   paused,
-
   handlePlay,
-  handleLightChange,
+  currentVideo,
 }: {
   paused: boolean
-
   handlePlay: () => void
-  handleLightChange: (
-    event: React.ChangeEvent<any>,
-    value: number | number[]
-  ) => void
+  currentVideo: Video
 }) => {
+  const { handlePrevious, handleNext, isTheFirsVideo, isTheLastVideo } =
+    useControls({
+      currentVideo,
+    })
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
-      <Button>
-        <SkipPrevious />
+      <Button disabled={isTheFirsVideo}>
+        <SkipPrevious onClick={handlePrevious} />
       </Button>
       <Button onClick={handlePlay}>{paused ? <PlayArrow /> : <Pause />}</Button>
-      <Button>
-        <SkipNext />
+      <Button disabled={isTheLastVideo}>
+        <SkipNext onClick={handleNext} />
       </Button>
-      <LightControl onChange={handleLightChange} />
     </ButtonGroup>
   )
 }

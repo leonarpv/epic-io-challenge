@@ -7,4 +7,6 @@ export interface IHomeContextState {
   setCurrentVideo: (video: Video) => void
   lightPercentage: number
   setLightPercentage: (percentage: number) => void
+  playVideo: boolean
+  setPlayVideo: (value: boolean) => void
 }

@@ -1,14 +1,16 @@
+import { Box, Typography } from "@material-ui/core"
 import React, { useContext, useEffect, useState } from "react"
 import HomeContext from "../../../../../application/context/HomeContext"
-import VideoController from "../../../../controllers/VideoController"
+import useVideos from "../../../../../application/hooks/useVideos"
+
 import Controls from "../../Molecules/Controls"
 import Display from "../../Molecules/Display"
+import LightControl from "../../Molecules/LightControl"
 import VideosList from "../../Molecules/VideosList"
 
 export const Home = () => {
-  const [playVideo, setPlayVideo] = useState<boolean>(false)
-
-  const { setLightPercentage } = useContext(HomeContext)
+  const { playVideo, setPlayVideo } = useVideos()
+  const { setLightPercentage, currentVideo } = useContext(HomeContext)
   const handleLightChange = (
     event: React.ChangeEvent<any>,
     value: number | number[]
@@ -19,14 +21,26 @@ export const Home = () => {
   }
 
   return (
-    <>
-      <Display playing={playVideo} />
-      <Controls
-        paused={!playVideo}
-        handleLightChange={handleLightChange}
-        handlePlay={() => setPlayVideo(!playVideo)}
-      />
-      <VideosList />
-    </>
+    <Box display="flex" flexDirection="column" justifyContent="center">
+      {!currentVideo && (
+        <Typography gutterBottom variant="h2" align="center">
+          Select one video
+        </Typography>
+      )}
+      <Display />
+      {currentVideo && (
+        <Box display="flex" flexDirection="row" justifyContent="space-evenly">
+          <Controls
+            currentVideo={currentVideo}
+            paused={!playVideo}
+            handlePlay={() => setPlayVideo(!playVideo)}
+          />
+          <LightControl onChange={handleLightChange} />
+        </Box>
+      )}
+      <Box display="flex" flexDirection="row">
+        <VideosList />
+      </Box>
+    </Box>
   )
 }

@@ -5,6 +5,8 @@ export const contextDefaultValues: IHomeContextState = {
   videos: [],
   currentVideo: null,
   lightPercentage: 0,
+  playVideo: false,
+  setPlayVideo: () => {},
   setVideos: () => {},
   setLightPercentage: () => {},
   setCurrentVideo: () => {},
