@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Slider, Typography } from "@material-ui/core";
-import { Brightness4, WbSunny } from "@material-ui/icons";
 
 export default function SliderControl({
   title,

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import {
   CircularProgress,
   FormControl,
@@ -14,16 +14,14 @@ import {
   StyledImage,
   StyledSpan,
 } from "./styles.css";
-import HomeContext from "../../../../../application/context/HomeContext";
 
-const VideosList = () => {
-  const { currentVideo } = useContext(HomeContext);
+export default function VideosList() {
   const { videos, getAllVideos, loadingVideos, handleSelectVideo } =
     useVideos();
 
   useEffect(() => {
     getAllVideos();
-  }, []);
+  }, [getAllVideos]);
   if (loadingVideos) {
     return (
       <LoaderContainer>
@@ -59,6 +57,4 @@ const VideosList = () => {
       </FormControl>
     </StyledContainer>
   );
-};
-
-export default VideosList;
+}

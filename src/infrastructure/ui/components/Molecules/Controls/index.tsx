@@ -4,19 +4,19 @@ import Video from "../../../../../domain/entities/Video"
 import Button from "../../Atoms/Button"
 import ButtonGroup from "../../Atoms/ButtonGroup";
 
-const Controls = ({
+export default function Controls({
   paused,
   handlePlay,
   currentVideo,
 }: {
-  paused: boolean
-  handlePlay: () => void
-  currentVideo: Video
-}) => {
+  paused: boolean;
+  handlePlay: () => void;
+  currentVideo: Video;
+}) {
   const { handlePrevious, handleNext, isTheFirsVideo, isTheLastVideo } =
     useControls({
       currentVideo,
-    })
+    });
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Button disabled={isTheFirsVideo}>
@@ -27,7 +27,6 @@ const Controls = ({
         <SkipNext onClick={handleNext} />
       </Button>
     </ButtonGroup>
-  )
+  );
 }
 
-export default Controls

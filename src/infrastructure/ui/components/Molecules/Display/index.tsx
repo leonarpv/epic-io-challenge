@@ -9,7 +9,7 @@ import {
   StyledContainer,
 } from "./styles.css";
 
-const Display = () => {
+export default function Display() {
   const { currentVideo, brightPercentage, opacityPercentage } =
     useContext(HomeContext);
   const { playVideo } = useVideos();
@@ -45,4 +45,3 @@ const Display = () => {
   );
 };
 
-export default Display;

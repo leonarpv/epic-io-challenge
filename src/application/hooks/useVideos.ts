@@ -1,12 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import VideoController from "../../infrastructure/controllers/VideoController"
-import HomeContext from "../context/HomeContext"
+import { useCallback, useContext, useState } from "react";
+import VideoController from "../../infrastructure/controllers/VideoController";
+import HomeContext from "../context/HomeContext";
 
 const useVideos = () => {
-
-  const [loadingVideos, setLoadingVideos] = useState<boolean>(false)
+  const [loadingVideos, setLoadingVideos] = useState<boolean>(false);
   const { videos, setVideos, setCurrentVideo, setPlayVideo, playVideo } =
-    useContext(HomeContext)
+    useContext(HomeContext);
   const getAllVideos = useCallback(async () => {
     setLoadingVideos(true);
     try {
@@ -36,6 +35,6 @@ const useVideos = () => {
     playVideo,
     setPlayVideo,
   };
-}
+};
 
-export default useVideos
+export default useVideos;
