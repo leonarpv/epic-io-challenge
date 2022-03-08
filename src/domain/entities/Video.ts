@@ -10,21 +10,21 @@ export default class Video extends Entity {
   title: string
   subtitle: string
   description: string
-  src: string
+  url: string
   thumbnail: string
 
   constructor({
     title,
     subtitle,
     description,
-    src,
+    url,
     thumbnail,
   }: Record<string, string>) {
     super()
     this.title = title
     this.subtitle = subtitle
     this.description = description
-    this.src = src
+    this.url = url
     this.thumbnail = thumbnail
   }
 }

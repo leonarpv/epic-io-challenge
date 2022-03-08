@@ -1,8 +1,5 @@
-import { Container } from "@material-ui/core"
-import { stringify } from "querystring"
 import React, { useEffect, useState } from "react"
 import HomeContext from "../../../../../application/context/HomeContext"
-import VideoContext from "../../../../../application/context/VideoContext"
 import Video from "../../../../../domain/entities/Video"
 import VideoController from "../../../../controllers/VideoController"
 import Controls from "../../Molecules/Controls"
@@ -12,6 +9,7 @@ import PlayerList from "../../Molecules/PlayerList"
 export const Home = () => {
   const [loadingVideos, setLoadingVideos] = useState<boolean>(false)
   const [errorState, setErrorState] = useState<string>("")
+  const [lightPercentage, setLightPercentage] = useState<number>(0.5)
   const [videos, setVideos] = useState<Video[]>([])
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null)
   const [playVideo, setPlayVideo] = useState<boolean>(false)
@@ -38,11 +36,22 @@ export const Home = () => {
     setCurrentVideo(selectedVideo)
   }
 
+  const handleLightChange = (
+    event: React.ChangeEvent<any>,
+    value: number | number[]
+  ) => {
+    const lightValue = value as number
+    const light = lightValue / 100
+    setLightPercentage(light)
+  }
   return (
-    <HomeContext.Provider value={{ videos, currentVideo }}>
-      {currentVideo && <Display src={currentVideo.src} playing={playVideo} />}
+    <HomeContext.Provider value={{ videos, currentVideo, lightPercentage }}>
+      <Display playing={playVideo} />
       <Controls
+        disabled={loadingVideos}
+        disabledPlay={!currentVideo}
         paused={!playVideo}
+        handleLightChange={handleLightChange}
         handlePlay={() => setPlayVideo(!playVideo)}
       />
       <PlayerList

@@ -10,7 +10,7 @@ export default class ApiVideoRepository implements VideoRepository {
     const [movies] = categories
     const newVideos = [...movies.videos].map((video: ResponseVideo) => {
       return new Video({
-        src: video.sources,
+        url: video.sources,
         thumbnail: video.thumb,
         ...video,
       })
