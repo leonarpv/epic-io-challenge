@@ -1,15 +1,10 @@
 import {
-  Box,
   CircularProgress,
   FormControl,
-  IconButton,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core"
+} from "@material-ui/core";
 
 import useVideos from "../../../../../application/hooks/useVideos"
 import {

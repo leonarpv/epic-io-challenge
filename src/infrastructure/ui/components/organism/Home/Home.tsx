@@ -15,9 +15,10 @@ export const Home = () => {
     event: React.ChangeEvent<any>,
     value: number | number[]
   ) => {
-    const lightValue = value as number
-    const percentage = lightValue / 100
-    setLightPercentage(percentage)
+    event.preventDefault();
+    const lightValue = value as number;
+    const percentage = lightValue / 100;
+    setLightPercentage(percentage);
   }
 
   return (

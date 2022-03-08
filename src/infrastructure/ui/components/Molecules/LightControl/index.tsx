@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, InputLabel, Slider } from "@material-ui/core"
-import { Brightness1, Brightness4, WbSunny } from "@material-ui/icons"
+import { Brightness4, WbSunny } from "@material-ui/icons";
 
 export default function LightControl({
   onChange,

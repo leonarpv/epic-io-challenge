@@ -1,17 +1,17 @@
-import { useContext, useEffect } from "react"
-import { Card, Container, Typography } from "@material-ui/core"
-import VideoPlayer from "../../Atoms/VideoPlayer"
-import HomeContext from "../../../../../application/context/HomeContext"
-import useVideos from "../../../../../application/hooks/useVideos"
+import { useContext } from "react";
+import { Card, Typography } from "@material-ui/core";
+import VideoPlayer from "../../Atoms/VideoPlayer";
+import HomeContext from "../../../../../application/context/HomeContext";
+import useVideos from "../../../../../application/hooks/useVideos";
 import {
   CaptionContainer,
   PlayerContainer,
   StyledContainer,
-} from "./styles.css"
+} from "./styles.css";
 
 const Display = () => {
-  const { currentVideo, lightPercentage } = useContext(HomeContext)
-  const { playVideo } = useVideos()
+  const { currentVideo, lightPercentage } = useContext(HomeContext);
+  const { playVideo } = useVideos();
 
   return (
     <StyledContainer>
@@ -40,7 +40,7 @@ const Display = () => {
         <Card />
       )}
     </StyledContainer>
-  )
-}
+  );
+};
 
-export default Display
+export default Display;

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Card, Container } from "@material-ui/core"
+import { Container } from "@material-ui/core";
 
 const StyledContainer = styled(Container)`
   display: flex;
