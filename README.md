@@ -45,7 +45,7 @@ In this case, Atomic Design provides another way to focus the build and organize
 - State, context and styling
 
 This challenge uses a ContextAPI implementation to figure out the requirements. In this ContextAPI configuration, it's established and initialized inside de application layer, and some hooks consume them from the infrastructure UI layer. T
-he Styling uses de Material UI base, and also a styled-components in some specific implementations to extend the UI in a declarative way
+he Styling uses de Material UI base, and also a styled-components in some specific implementations to extend the UI functionality 
 
 ```javascript
 ./application
