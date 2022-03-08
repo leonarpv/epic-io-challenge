@@ -33,9 +33,11 @@ In this case, Atomic Design provides another way to focus the build and organize
 
 ```javascript
 ./infrastructure
-.../Atoms
-.../Molecules
-.../Organism
+..../ui
+....../Atoms
+....../Molecules
+....../Organism
+
 ```
 
 
