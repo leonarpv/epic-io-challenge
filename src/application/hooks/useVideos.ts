@@ -8,31 +8,34 @@ const useVideos = () => {
   const { videos, setVideos, setCurrentVideo, setPlayVideo, playVideo } =
     useContext(HomeContext)
   const getAllVideos = useCallback(async () => {
-    setLoadingVideos(true)
+    setLoadingVideos(true);
     try {
-      const videosResponse = await VideoController.getAllVideos()
-      setVideos(videosResponse)
-      setLoadingVideos(false)
+      const videosResponse = await VideoController.getAllVideos();
+      setVideos(videosResponse);
+      setLoadingVideos(false);
     } catch (error: unknown) {
-      setLoadingVideos(false)
+      setLoadingVideos(false);
     }
-  }, [])
+  }, [setVideos]);
 
   const handleSelectVideo = (
     event: React.ChangeEvent<{ name?: string; value: any }>
   ) => {
-    const id = event.target.value
-    const indexSelected = videos.findIndex((item) => item.id === id)
-    const selectedVideo = videos[indexSelected]
-    setPlayVideo(true)
-    setCurrentVideo(selectedVideo)
-  }
+    const id = event.target.value;
+    const indexSelected = videos.findIndex((item) => item.id === id);
+    const selectedVideo = videos[indexSelected];
+    setPlayVideo(true);
+    setCurrentVideo(selectedVideo);
+  };
 
-  useEffect(() => {
-    getAllVideos()
-  }, [getAllVideos])
-
-  return { videos, loadingVideos, handleSelectVideo, playVideo, setPlayVideo }
+  return {
+    videos,
+    getAllVideos,
+    loadingVideos,
+    handleSelectVideo,
+    playVideo,
+    setPlayVideo,
+  };
 }
 
 export default useVideos

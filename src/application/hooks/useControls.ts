@@ -9,7 +9,7 @@ const useControls = ({ currentVideo }: { currentVideo: Video }) => {
 
   const currentIndex = useMemo(
     () => videos.findIndex((item) => item.id === currentVideo.id),
-    [currentVideo]
+    [currentVideo.id, videos]
   );
   const isTheFirsVideo = currentIndex === 0;
   const isTheLastVideo = currentIndex === videos.length - 1;

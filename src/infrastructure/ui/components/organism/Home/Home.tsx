@@ -1,16 +1,16 @@
-import { Box, Typography } from "@material-ui/core"
-import React, { useContext } from "react"
-import HomeContext from "../../../../../application/context/HomeContext"
-import useVideos from "../../../../../application/hooks/useVideos"
+import React, { useContext } from "react";
+import { Box, Typography } from "@material-ui/core";
+import HomeContext from "../../../../../application/context/HomeContext";
+import useVideos from "../../../../../application/hooks/useVideos";
 
-import Controls from "../../Molecules/Controls"
-import Display from "../../Molecules/Display"
-import LightControl from "../../Molecules/LightControl"
-import VideosList from "../../Molecules/VideosList"
+import Controls from "../../Molecules/Controls";
+import Display from "../../Molecules/Display";
+import LightControl from "../../Molecules/LightControl";
+import VideosList from "../../Molecules/VideosList";
 
 export const Home = () => {
-  const { playVideo, setPlayVideo } = useVideos()
-  const { setLightPercentage, currentVideo } = useContext(HomeContext)
+  const { playVideo, setPlayVideo } = useVideos();
+  const { setLightPercentage, currentVideo } = useContext(HomeContext);
   const handleLightChange = (
     event: React.ChangeEvent<any>,
     value: number | number[]
@@ -19,7 +19,7 @@ export const Home = () => {
     const lightValue = value as number;
     const percentage = lightValue / 100;
     setLightPercentage(percentage);
-  }
+  };
 
   return (
     <Box display="flex" flexDirection="column" justifyContent="center">
@@ -43,5 +43,5 @@ export const Home = () => {
         <VideosList />
       </Box>
     </Box>
-  )
-}
+  );
+};

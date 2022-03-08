@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import {
   CircularProgress,
   FormControl,
@@ -6,22 +7,29 @@ import {
   Select,
 } from "@material-ui/core";
 
-import useVideos from "../../../../../application/hooks/useVideos"
+import useVideos from "../../../../../application/hooks/useVideos";
 import {
   LoaderContainer,
   StyledContainer,
   StyledImage,
   StyledSpan,
-} from "./styles.css"
+} from "./styles.css";
+import HomeContext from "../../../../../application/context/HomeContext";
 
 const VideosList = () => {
-  const { videos, loadingVideos, handleSelectVideo } = useVideos()
+  const { currentVideo } = useContext(HomeContext);
+  const { videos, getAllVideos, loadingVideos, handleSelectVideo } =
+    useVideos();
+
+  useEffect(() => {
+    getAllVideos();
+  }, []);
   if (loadingVideos) {
     return (
       <LoaderContainer>
         <CircularProgress size={90} />
       </LoaderContainer>
-    )
+    );
   }
 
   return (
@@ -45,12 +53,12 @@ const VideosList = () => {
                 />
                 <StyledSpan> {video.title}</StyledSpan>
               </MenuItem>
-            )
+            );
           })}
         </Select>
       </FormControl>
     </StyledContainer>
-  )
-}
+  );
+};
 
-export default VideosList
+export default VideosList;

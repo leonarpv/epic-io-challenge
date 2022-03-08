@@ -2,7 +2,7 @@ import { Pause, PlayArrow, SkipNext, SkipPrevious } from "@material-ui/icons"
 import useControls from "../../../../../application/hooks/useControls"
 import Video from "../../../../../domain/entities/Video"
 import Button from "../../Atoms/Button"
-import ButtonGroup from "../../Atoms/ButtonGroup"
+import ButtonGroup from "../../Atoms/ButtonGroup";
 
 const Controls = ({
   paused,

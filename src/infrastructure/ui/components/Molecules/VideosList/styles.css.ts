@@ -20,12 +20,15 @@ const StyledContainer = styled(Container)`
   margin-top: 20px;
   min-height: 400px;
   padding: 50px;
+  & .MuiSelect-select.MuiSelect-select {
+    display: flex;
+  }
   & img {
     height: 50px;
   }
   & spam {
     vertical-align: center;
   }
-`
+`;
 
 export { LoaderContainer, StyledContainer, StyledImage, StyledSpan }
