@@ -1,5 +1,5 @@
 import { Box, Typography } from "@material-ui/core"
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import HomeContext from "../../../../../application/context/HomeContext"
 import useVideos from "../../../../../application/hooks/useVideos"
 
