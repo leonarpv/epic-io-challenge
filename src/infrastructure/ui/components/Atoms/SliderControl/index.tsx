@@ -1,0 +1,27 @@
+import React from "react";
+import { Box, Slider, Typography } from "@material-ui/core";
+import { Brightness4, WbSunny } from "@material-ui/icons";
+
+export default function SliderControl({
+  title,
+  onChange,
+}: {
+  title: string;
+  onChange: (event: React.ChangeEvent<any>, value: number | number[]) => void;
+}) {
+  return (
+    <Box flexDirection="row" display="flex">
+      <Typography id="input-slider" gutterBottom>
+        {title}
+      </Typography>
+      <Box width={150} margin="20" flexDirection="row" display="flex">
+        <Slider
+          defaultValue={50}
+          aria-labelledby="input-slider"
+          onChange={onChange}
+          valueLabelDisplay="auto"
+        />
+      </Box>
+    </Box>
+  );
+}

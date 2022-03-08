@@ -1,25 +1,35 @@
-import React from "react"
-import { Box, InputLabel, Slider } from "@material-ui/core"
-import { Brightness4, WbSunny } from "@material-ui/icons";
+import React, { useContext } from "react";
+import { Box } from "@material-ui/core";
 
-export default function LightControl({
-  onChange,
-}: {
-  onChange: (event: React.ChangeEvent<any>, value: number | number[]) => void
-}) {
+import SliderControl from "../../Atoms/SliderControl";
+import HomeContext from "../../../../../application/context/HomeContext";
+
+export default function LightControl() {
+  const { setBrightPercentage, setOpacityPercentage } = useContext(HomeContext);
+  const handleOpacityChange = (
+    event: React.ChangeEvent<any>,
+    value: number | number[]
+  ) => {
+    event.preventDefault();
+    const lightValue = value as number;
+    const percentage = lightValue / 100;
+    setOpacityPercentage(percentage);
+  };
+
+  const handleBrightChange = (
+    event: React.ChangeEvent<any>,
+    value: number | number[]
+  ) => {
+    event.preventDefault();
+    const lightValue = value as number;
+    const percentage = lightValue / 100;
+    setBrightPercentage(percentage);
+  };
+
   return (
-    <Box width={200} flexDirection="row" display="flex">
-      <InputLabel id="demo-simple-slider-label">Brightness</InputLabel>
-      <Box width={150} flexDirection="row" display="flex">
-        <Brightness4 />
-        <Slider
-          defaultValue={50}
-          aria-label="demo-simple-slider-label"
-          onChange={onChange}
-          valueLabelDisplay="auto"
-        />
-        <WbSunny />
-      </Box>
+    <Box flexDirection="row" display="flex">
+      <SliderControl title="Brightness" onChange={handleBrightChange} />
+      <SliderControl title="Opacity" onChange={handleOpacityChange} />
     </Box>
-  )
+  );
 }

@@ -4,13 +4,15 @@ import { IHomeContextState } from "./interfaces"
 export const contextDefaultValues: IHomeContextState = {
   videos: [],
   currentVideo: null,
-  lightPercentage: 0,
+  brightPercentage: 0,
+  opacityPercentage: 0,
   playVideo: false,
   setPlayVideo: () => {},
   setVideos: () => {},
-  setLightPercentage: () => {},
+  setBrightPercentage: () => {},
+  setOpacityPercentage: () => {},
   setCurrentVideo: () => {},
-}
+};
 const HomeContext = createContext<IHomeContextState>(contextDefaultValues)
 
 export default HomeContext

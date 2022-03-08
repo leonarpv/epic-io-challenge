@@ -10,23 +10,18 @@ import VideosList from "../../Molecules/VideosList";
 
 export const Home = () => {
   const { playVideo, setPlayVideo } = useVideos();
-  const { setLightPercentage, currentVideo } = useContext(HomeContext);
-  const handleLightChange = (
-    event: React.ChangeEvent<any>,
-    value: number | number[]
-  ) => {
-    event.preventDefault();
-    const lightValue = value as number;
-    const percentage = lightValue / 100;
-    setLightPercentage(percentage);
-  };
-
+  const { currentVideo } = useContext(HomeContext);
   return (
     <Box display="flex" flexDirection="column" justifyContent="center">
       {!currentVideo && (
-        <Typography gutterBottom variant="h2" align="center">
-          Select one video
-        </Typography>
+        <>
+          <Typography gutterBottom variant="h2" align="center">
+            Visual Control App
+          </Typography>
+          <Typography gutterBottom variant="h4" align="center">
+            Select the video
+          </Typography>
+        </>
       )}
       <Display />
       {currentVideo && (
@@ -36,7 +31,7 @@ export const Home = () => {
             paused={!playVideo}
             handlePlay={() => setPlayVideo(!playVideo)}
           />
-          <LightControl onChange={handleLightChange} />
+          <LightControl />
         </Box>
       )}
       <Box display="flex" flexDirection="row">

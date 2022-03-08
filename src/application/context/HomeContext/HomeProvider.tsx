@@ -8,8 +8,11 @@ const HomeProvider: FC = ({ children }) => {
   const [currentVideo, setCurrentVideo] = useState<Video | null>(
     contextDefaultValues.currentVideo
   );
-  const [lightPercentage, setLightPercentage] = useState<number>(
-    contextDefaultValues.lightPercentage
+  const [brightPercentage, setBrightPercentage] = useState<number>(
+    contextDefaultValues.brightPercentage
+  );
+  const [opacityPercentage, setOpacityPercentage] = useState<number>(
+    contextDefaultValues.opacityPercentage
   );
   const [playVideo, setPlayVideo] = useState(contextDefaultValues.playVideo);
   return (
@@ -20,8 +23,10 @@ const HomeProvider: FC = ({ children }) => {
           setVideos,
           currentVideo,
           setCurrentVideo,
-          lightPercentage,
-          setLightPercentage,
+          brightPercentage,
+          setBrightPercentage,
+          opacityPercentage,
+          setOpacityPercentage,
           playVideo,
           setPlayVideo,
         } as unknown as IHomeContextState

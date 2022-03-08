@@ -10,7 +10,8 @@ import {
 } from "./styles.css";
 
 const Display = () => {
-  const { currentVideo, lightPercentage } = useContext(HomeContext);
+  const { currentVideo, brightPercentage, opacityPercentage } =
+    useContext(HomeContext);
   const { playVideo } = useVideos();
 
   return (
@@ -21,7 +22,8 @@ const Display = () => {
             <VideoPlayer
               url={currentVideo.url}
               playing={playVideo}
-              lightPercentage={lightPercentage}
+              brightPercentage={brightPercentage}
+              opacityPercentage={opacityPercentage}
             />
           </PlayerContainer>
           <CaptionContainer>

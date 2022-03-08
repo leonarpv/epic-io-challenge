@@ -13,7 +13,7 @@ const StyledVideoPlayer = styled(ReactPlayer)`
   position: relative;
 `
 interface LightProps {
-  lightPercentage: number
+  brightPercentage: number;
 }
 const StyledVideoLight = styled.div<LightProps>`
   z-index: 2;
@@ -21,7 +21,24 @@ const StyledVideoLight = styled.div<LightProps>`
   width: 640px;
   height: 360px;
   background: ${(props: LightProps) =>
-    `rgba(255, 255, 255, ${props.lightPercentage})`};
-`
+    `rgba(255, 255, 255, ${props.brightPercentage})`};
+`;
+interface OpacityProps {
+  opacityPercentage: number;
+}
 
-export { StyledVideoContainer, StyledVideoPlayer, StyledVideoLight }
+const StyledVideoOpacity = styled.div<OpacityProps>`
+  z-index: 2;
+  position: relative;
+  width: 640px;
+  height: 360px;
+  background: ${(props: OpacityProps) =>
+    `rgba(0, 0, 0, ${props.opacityPercentage})`};
+`;
+
+export {
+  StyledVideoContainer,
+  StyledVideoPlayer,
+  StyledVideoLight,
+  StyledVideoOpacity,
+};
